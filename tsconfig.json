@@ -1,0 +1,22 @@
+{
+  "declarations": true,
+  "compilerOptions": {
+      "lib": [ 
+        "es2015"
+      ],
+      "types": [
+        "node"
+      ],
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "sourceMap": true
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

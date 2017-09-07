@@ -1,0 +1,19 @@
+{
+  "name": "bunyan-mongo",
+  "version": "1.0.0",
+  "description": "MongoDB Stream to Bunyan Logger",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Evgeni Zharkov",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^2.2.31"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^2.2.11",
+    "@types/node": "^8.0.27"
+  }
+}
