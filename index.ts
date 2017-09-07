@@ -9,7 +9,7 @@
 import * as mongo from "mongodb";
 import * as stream from "stream";
 
-interface IParameters {
+export interface IParameters {
   dbUrl: string;
   collection: string;
   batchSize?: number;

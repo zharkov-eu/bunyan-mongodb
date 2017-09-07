@@ -1,5 +1,5 @@
 {
-  "declarations": true,
+  "declaration": true,
   "compilerOptions": {
       "lib": [ 
         "es2015"
