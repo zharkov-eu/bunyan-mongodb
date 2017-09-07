@@ -1,5 +1,5 @@
 {
-  "name": "bunyan-mongo",
+  "name": "bunyan-mongodb",
   "version": "1.0.0",
   "description": "MongoDB Stream to Bunyan Logger",
   "main": "index.js",
