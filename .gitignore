@@ -44,3 +44,6 @@ test/*/*.js
 
 # Generated js.map
 *.js.map
+
+# Generated d.ts
+*.d.ts
