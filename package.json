@@ -4,6 +4,10 @@
   "description": "MongoDB Stream to Bunyan Logger",
   "main": "index.js",
   "types": "index.d.ts",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/zharkov-eu/bunyan-mongodb"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
