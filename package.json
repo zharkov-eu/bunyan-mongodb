@@ -1,12 +1,12 @@
 {
   "name": "bunyan-mongodb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MongoDB Stream to Bunyan Logger",
   "main": "index.js",
   "types": "index.d.ts",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/zharkov-eu/bunyan-mongodb"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zharkov-eu/bunyan-mongodb"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
