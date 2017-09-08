@@ -37,9 +37,11 @@ typings/
 .vs
 
 # TypeScript Source files
-app/*/*.ts
 *.ts
+!*.d.ts
 /nbproject/private/
+tsconfig.json
+tslint.json
 
 # Test files
 test/
