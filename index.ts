@@ -6,18 +6,22 @@
 
 "use strict";
 
-import * as mongo from "mongodb";
+import * as mongodb from "mongodb";
 import * as stream from "stream";
 
 export interface IParameters {
-  dbUrl: string;
+  host: string;
+  database: string;
   collection: string;
+  username?: string;
+  password?: string;
+  authDatabase?: string;
   batchSize?: number;
 }
 
 interface IConnection {
-  db?: mongo.Db;
-  collection?: mongo.Collection;
+  client?: mongodb.MongoClient;
+  collection?: mongodb.Collection;
 }
 
 let batchSize: number = 1;
@@ -25,8 +29,11 @@ const batch: object[] = [];
 const connection: IConnection = {};
 
 async function initConnection(parameters): Promise<void> {
-  connection.db = await mongo.MongoClient.connect(parameters.dbUrl);
-  connection.collection = connection.db.collection(parameters.collection);
+  const databaseAuth = parameters.authDatabase || parameters.database;
+  const connectAuth = parameters.username ? parameters.username + ":" + parameters.password + "@" : "";
+  const connectString = "mongodb://" + connectAuth + parameters.host + "/" + databaseAuth;
+  connection.client = await mongodb.MongoClient.connect(connectString);
+  connection.collection = connection.client.db(parameters.database).collection(parameters.collection);
 }
 
 async function add(record: string | Buffer): Promise<void> {
@@ -40,6 +47,7 @@ async function add(record: string | Buffer): Promise<void> {
 
 export default function mongoWritableStream(parameters: IParameters): stream.Writable {
   if (parameters.batchSize > 1) { batchSize = parameters.batchSize; }
+
   const writable = new stream.Writable({
     write: async (record, encoding, next) => {
       if (!connection.collection) { await initConnection(connection); }
@@ -53,8 +61,12 @@ export default function mongoWritableStream(parameters: IParameters): stream.Wri
       await connection.collection.insertMany(batch);
       batch.length = 0;
     }
-    await connection.db.close();
+    await connection.client.close();
     writable.emit("close");
+  });
+
+  writable.on("error", () => {
+    console.error("MongoDB logger error");
   });
 
   return writable;

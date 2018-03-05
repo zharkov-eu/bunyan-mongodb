@@ -14,10 +14,10 @@
   "author": "Evgeni Zharkov",
   "license": "MIT",
   "dependencies": {
-    "mongodb": "^2.2.31"
+    "mongodb": "^3.0.3"
   },
   "devDependencies": {
-    "@types/mongodb": "^2.2.11",
+    "@types/mongodb": "^3.0.5",
     "@types/node": "^8.0.27"
   }
 }
