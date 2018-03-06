@@ -1,16 +1,17 @@
 {
   "declaration": true,
   "compilerOptions": {
-      "lib": [ 
-        "es2015"
-      ],
-      "types": [
-        "node"
-      ],
-      "typeRoots": [
-        "node_modules/@types"
-      ],
-      "sourceMap": true
+    "lib": [
+      "es2015"
+    ],
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "sourceMap": true,
+    "declaration": true
   },
   "include": [
     "**/*"
