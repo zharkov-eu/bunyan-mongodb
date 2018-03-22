@@ -28,7 +28,7 @@ let batchSize: number = 1;
 const batch: object[] = [];
 const connection: IConnection = {};
 
-async function initConnection(parameters): Promise<void> {
+async function initConnection(parameters: IParameters): Promise<void> {
   const databaseAuth = parameters.authDatabase || parameters.database;
   const connectAuth = parameters.username ? parameters.username + ":" + parameters.password + "@" : "";
   const connectString = "mongodb://" + connectAuth + parameters.host + "/" + databaseAuth;
@@ -50,7 +50,7 @@ export default function mongoWritableStream(parameters: IParameters): stream.Wri
 
   const writable = new stream.Writable({
     write: async (record, encoding, next) => {
-      if (!connection.collection) { await initConnection(connection); }
+      if (!connection.collection) { await initConnection(parameters); }
       await add(record);
       next();
     },
