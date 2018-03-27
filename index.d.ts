@@ -4,8 +4,10 @@ export interface IParameters {
     host: string;
     database: string;
     collection: string;
-    username?: string;
+    replicaSet?: string;
     password?: string;
+    port?: number;
+    username?: string;
     authDatabase?: string;
     batchSize?: number;
 }

@@ -1,6 +1,6 @@
 {
   "name": "bunyan-mongodb",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "MongoDB Stream to Bunyan Logger",
   "main": "index.js",
   "types": "index.d.ts",
@@ -14,10 +14,10 @@
   "author": "Evgeni Zharkov",
   "license": "MIT",
   "dependencies": {
-    "mongodb": "^3.0.3"
+    "mongodb": "^3.0.5"
   },
   "devDependencies": {
-    "@types/mongodb": "^3.0.8",
-    "@types/node": "^8.9.5"
+    "@types/mongodb": "^3.0.9",
+    "@types/node": "^8.10.0"
   }
 }

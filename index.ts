@@ -13,8 +13,10 @@ export interface IParameters {
   host: string;
   database: string;
   collection: string;
-  username?: string;
+  replicaSet?: string;
   password?: string;
+  port?: number;
+  username?: string;
   authDatabase?: string;
   batchSize?: number;
 }
@@ -31,7 +33,14 @@ const connection: IConnection = {};
 async function initConnection(parameters: IParameters): Promise<void> {
   const databaseAuth = parameters.authDatabase || parameters.database;
   const connectAuth = parameters.username ? parameters.username + ":" + parameters.password + "@" : "";
-  const connectString = "mongodb://" + connectAuth + parameters.host + "/" + databaseAuth;
+  let connectString = "mongodb://" + connectAuth + parameters.host;
+  if (parameters.port) {
+    connectString += ":" + parameters.port;
+  }
+  connectString += "/" + databaseAuth;
+  if (parameters.replicaSet) {
+    connectString = connectString + "?replicaSet=" + parameters.replicaSet;
+  }
   connection.client = await mongodb.MongoClient.connect(connectString);
   connection.collection = connection.client.db(parameters.database).collection(parameters.collection);
 }
